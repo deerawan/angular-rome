@@ -6,6 +6,8 @@ var concat = require('gulp-concat');
 var watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var uglify = require('gulp-uglifyjs');
+var browserify = require('browserify')
+var source = require('vinyl-source-stream')
 var Server = require('karma').Server;
 
 gulp.task('lint', function () {
@@ -30,6 +32,13 @@ gulp.task('watch', function() {
     }));
 });
 
+gulp.task('browserify', function() {
+  return browserify('./src/angular-rome.js')
+      .bundle()
+      .pipe(source('angular-rome.js'))
+      .pipe(gulp.dest('.'));
+});
+
 gulp.task('uglify', function() {
   return gulp.src('angular-rome.js')
     .pipe(uglify('angular-rome.min.js', {
@@ -38,13 +47,6 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('browserify', function() {
-  return browserify('./src/angular-rome.js')
-      .bundle()
-      .pipe(source('angular-rome.js'))
-      .pipe(gulp.dest('.'));
-})
-
-gulp.task('build', ['lint', 'test', 'concat', 'uglify']);
+gulp.task('build', ['lint', 'browserify', 'uglify']);
 
 gulp.task('default', ['build']);
