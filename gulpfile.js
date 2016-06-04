@@ -38,6 +38,13 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('browserify', function() {
+  return browserify('./src/angular-rome.js')
+      .bundle()
+      .pipe(source('angular-rome.js'))
+      .pipe(gulp.dest('.'));
+})
+
 gulp.task('build', ['lint', 'test', 'concat', 'uglify']);
 
 gulp.task('default', ['build']);
