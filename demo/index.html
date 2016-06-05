@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Example Angular Rome</title>
+  <link rel="stylesheet" href="../node_modules/rome/dist/rome.css">
 </head>
 <body ng-controller="RomeDemoController as vm">
   <h1>Rome</h1>
-  <rome ng-model="rampok"></rome>
-  {{ rampok }}
+  <rome ng-model="vm.myDate" input-format="D/MM/YYYY" time="false"></rome>
+  {{ vm.myDate | date }}
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
   <script src="../angular-rome.js"></script>

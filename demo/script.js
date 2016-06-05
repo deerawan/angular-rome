@@ -7,5 +7,6 @@
 
   function RomeDemoController() {
     var vm = this;
+    vm.myDate = new Date();
   }
 })();

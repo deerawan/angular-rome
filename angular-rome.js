@@ -6705,44 +6705,37 @@ var moment = require('moment');
     return directive;
 
     function link(scope, element, attrs, ngModelCtrl) {
-      var element = element.find('input');
-      var inputElement = element[0];
-      console.log(element);
+      var romeConfig = {
+        initialValue: attrs.ngModel,
+        time: attrs.time === 'true',
+        inputFormat: attrs.inputFormat
+      };
 
-      var romeElement = rome(element[0], { time: false });
-
-      var dateFormat = 'D-MM-YYYY';
+      var inputElement = element.find('input')[0];
+      var romeElement = rome(inputElement, romeConfig);
 
       ngModelCtrl.$formatters.push(function(modelValue) {
-        console.log(modelValue);
         return {
-          date: '2015-05-05'
-        };
+          date: modelValue
+        }
       });
 
       ngModelCtrl.$render = function() {
-        // scope.date = moment(ngModelCtrl.$viewValue.date).format(dateFormat);
-        inputElement.value = moment(ngModelCtrl.$viewValue.date).format(dateFormat);
+        inputElement.value = moment(ngModelCtrl.$viewValue.date).format(attrs.inputFormat);
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
-        var test =  moment(viewValue.date, dateFormat).format('YYYY-MM-DD');
+        var test =  moment(viewValue.date, attrs.inputFormat).format('YYYY-MM-DD');
         console.log(test);
         return test;
       });
 
       romeElement.on('data', function (value) {
         scope.$apply(function () {
-          // scope.ngModel = value;
-          // formatDate();
-          var gila = moment(value).format(dateFormat);
-          console.log(gila);
           ngModelCtrl.$setViewValue({
-            date: gila
+            date: value
           });
-          // ngModelCtrl.$render();
-          // scope.date = gila;
-          inputElement.value = gila;
+          inputElement.value = value;
         });
       });
     }
