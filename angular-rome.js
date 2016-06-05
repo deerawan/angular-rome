@@ -6717,12 +6717,28 @@ var moment = require('moment');
         romeConfig.time = attrs.time === 'true';
       }
 
+      if (attrs.date) {
+        romeConfig.date = attrs.date === 'true';
+      }
+
       if (attrs.inputFormat) {
         romeConfig.inputFormat = attrs.inputFormat;
       }
 
       if (attrs.weekStart) {
         romeConfig.weekStart = Number(attrs.weekStart);
+      }
+
+      if (attrs.monthsInCalendar) {
+        romeConfig.monthsInCalendar = Number(attrs.monthsInCalendar);
+      }
+
+      if (attrs.min) {
+        romeConfig.min = attrs.min;
+      }
+
+      if (attrs.max) {
+        romeConfig.max = attrs.max;
       }
 
       var inputElement = element.find('input')[0];
@@ -6739,7 +6755,7 @@ var moment = require('moment');
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
-        var test =  moment(viewValue.date, attrs.inputFormat).format('YYYY-MM-DD');
+        var test =  romeElement.getDate();
         console.log(test);
         return test;
       });

@@ -29,6 +29,66 @@
         </code>
       </pre>
     </div>
+
+    <div class='parent'>
+      <label for='sm'>Weeks starting on monday: </label>
+      <rome ng-model="vm.date3" week-start="1"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date3&quot; week-start=&quot;1&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='d'>Pick a date: </label>
+      <rome ng-model="vm.date4" time="false"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date4&quot; time=&quot;false&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='t'>Pick a time: </label>
+      <rome ng-model="vm.date5" date="false"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date4&quot; date=&quot;false&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='mms'>Want to display two contiguous months instead of just one?</label>
+      <rome ng-model="vm.date6" months-in-calendar="2"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date6&quot; months-in-calendar=&quot;2&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='mm'>Pick a date between <em>2013-12-30</em> and <em>2014-10-01</em>: </label>
+      <rome ng-model="vm.date7" min="2013-12-30" max="2014-10-01"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date7&quot; min=&quot;2013-12-30&quot; max=&quot;2014-10-01&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='mmt'>It works great with specific date and time too! </label>
+      <rome ng-model="vm.date8" min="2014-04-30 19:45" max="2014-09-01 08:30"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date8&quot; min=&quot;2014-04-30 19:45&quot; max=&quot;2014-09-01 08:30&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
   </div>
 
   <h1>Rome</h1>
