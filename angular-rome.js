@@ -6747,20 +6747,34 @@ var moment = require('moment');
       }
 
       if (attrs.beforeEq) {
-        var beforeElement = document.getElementById('date10');
+        var beforeElement = document.getElementById(attrs.beforeEq);
         romeConfig.dateValidator = rome.val.beforeEq(beforeElement);
       }
 
+      if (attrs.before) {
+        var beforeElement = document.getElementById(attrs.before);
+        romeConfig.dateValidator = rome.val.after(beforeElement);
+      }
+
       if (attrs.afterEq) {
-        var afterElement = document.getElementById('date9');
+        var afterElement = document.getElementById(attrs.afterEq);
         romeConfig.dateValidator = rome.val.afterEq(afterElement);
+      }
+
+      if (attrs.after) {
+        var afterElement = document.getElementById(attrs.after);
+        romeConfig.dateValidator = rome.val.after(afterElement);
+      }
+
+      if (attrs.styles) {
+        romeConfig.styles = attrs.styles;
       }
 
       var romeElement = rome(input, romeConfig);
 
       ngModelCtrl.$formatters.push(function(modelValue) {
-        return {
-          date: modelValue
+        if (modelValue) {
+          input.value = romeElement.setValue(modelValue);
         }
       });
 

@@ -31,6 +31,16 @@
     </div>
 
     <div class='parent'>
+      <label for='sm'>Works with input format: </label>{{ vm.dateInputFormat | date }}
+      <rome ng-model="vm.dateInputFormat" input-format="D/MM/YYYY"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.dateInputFormat&quot; input-format=&quot;D/MM/YYYY&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
       <label for='sm'>Weeks starting on monday: </label>
       <rome ng-model="vm.date3" week-start="1"></rome>
       <pre>
@@ -101,13 +111,6 @@
       </pre>
     </div>
   </div>
-
-  <h1>Rome</h1>
-
-  <rome ng-model="vm.myDate" input-format="D/MM/YYYY" time="false"></rome>
-  <rome ng-model="vm.date3" initial-value="2014-12-08 08:36"></rome>
-  <rome ng-model="vm.date4" week-start="1"></rome>
-  {{ vm.myDate | date }}
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
   <script src="../angular-rome.js"></script>
