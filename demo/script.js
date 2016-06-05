@@ -2,10 +2,9 @@
 'use strict';
 
   angular
-    .module('angular2romeDemo')
+    .module('romeDemo', ['bgn.rome'])
     .controller('RomeDemoController', RomeDemoController);
 
-  RomeDemoController.$inject = ['bgn.rome'];
   function RomeDemoController() {
     var vm = this;
   }

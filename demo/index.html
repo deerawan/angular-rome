@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="gravatarImageExample">
+<html lang="en" ng-app="romeDemo">
 <head>
   <meta charset="UTF-8">
   <title>Example Angular Rome</title>
 </head>
-<body>
+<body ng-controller="RomeDemoController as vm">
   <h1>Rome</h1>
-  <rome></rome>
+  <rome ng-model="rampok"></rome>
+  {{ rampok }}
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
   <script src="../angular-rome.js"></script>

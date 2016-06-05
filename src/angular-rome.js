@@ -1,14 +1,15 @@
 var rome = require('rome');
+var moment = require('moment');
 
 (function() {
   'use strict';
 
   angular
-    .module('bgn.rome')
-    .directive('rome', rome);
+    .module('bgn.rome', [])
+    .directive('rome', romeDirective);
 
-  rome.$inject = [];
-  function rome() {
+  romeDirective.$inject = [];
+  function romeDirective() {
     // Usage:
     //
     // Creates:
@@ -17,18 +18,20 @@ var rome = require('rome');
         bindToController: true,
         controller: RomeController,
         controllerAs: 'vm',
+        require: 'ngModel',
         link: link,
-        restrict: 'A',
+        restrict: 'E',
         scope: {
         },
         template: '<input type="text" />'
     };
     return directive;
 
-    function link(scope, element, attrs) {
+    function link(scope, element, attrs, ngModelCtrl) {
       var element = element.find('input');
       var inputElement = element[0];
       console.log(element);
+
       var romeElement = rome(element[0], { time: false });
 
       var dateFormat = 'D-MM-YYYY';
