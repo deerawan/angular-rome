@@ -28,6 +28,11 @@ var moment = require('moment');
     return directive;
 
     function link(scope, element, attrs, ngModelCtrl) {
+      var inputElement = element.find('input');
+      var input = element.find('input')[0];
+
+      addNonDirectiveAttributes(attrs, element, inputElement);
+
       var romeConfig = {
         initialValue: ngModelCtrl.$modelValue.value
       };
@@ -64,8 +69,17 @@ var moment = require('moment');
         romeConfig.max = attrs.max;
       }
 
-      var inputElement = element.find('input')[0];
-      var romeElement = rome(inputElement, romeConfig);
+      if (attrs.beforeEq) {
+        var beforeElement = document.getElementById('date10');
+        romeConfig.dateValidator = rome.val.beforeEq(beforeElement);
+      }
+
+      if (attrs.afterEq) {
+        var afterElement = document.getElementById('date9');
+        romeConfig.dateValidator = rome.val.afterEq(afterElement);
+      }
+
+      var romeElement = rome(input, romeConfig);
 
       ngModelCtrl.$formatters.push(function(modelValue) {
         return {
@@ -74,7 +88,7 @@ var moment = require('moment');
       });
 
       ngModelCtrl.$render = function() {
-        inputElement.value = romeElement.getDateString();
+        input.value = romeElement.getDateString();
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
@@ -88,9 +102,20 @@ var moment = require('moment');
           ngModelCtrl.$setViewValue({
             date: value
           });
-          inputElement.value = value;
+          input.value = value;
         });
       });
+
+      function addNonDirectiveAttributes(attrs, directiveElement, inputElement) {
+        angular.forEach({
+          'id': attrs.id
+        }, function (value, name) {
+          if (angular.isDefined(value)) {
+            directiveElement.removeAttr(name);
+            inputElement.attr(name, value);
+          }
+        });
+      }
     }
   }
   /* @ngInject */
