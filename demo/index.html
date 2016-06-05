@@ -2,12 +2,40 @@
 <html lang="en" ng-app="romeDemo">
 <head>
   <meta charset="UTF-8">
-  <title>Example Angular Rome</title>
+  <title>Angular Rome Example</title>
+  <link rel="stylesheet" href="example.css">
   <link rel="stylesheet" href="../node_modules/rome/dist/rome.css">
 </head>
 <body ng-controller="RomeDemoController as vm">
   <h1>Rome</h1>
+  <h3>AngularJS Directive for Rome</h3>
+  <div class='examples'>
+    <div class='parent'>
+      <div>
+      <label for='dt'>Pick a date and a time: </label>
+      <rome ng-model="vm.date1"></rome>
+      </div>
+      <pre>
+        <code>&lt;rome ng-model=&quot;vm.date1&quot;&gt;&lt;/rome&gt;</code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <label for='dt'>Works just fine with initial values! </label>
+      <rome ng-model="vm.date2" initial-value="2014-12-08 08:36"></rome>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.date2&quot; initial-value=&quot;2014-12-08 08:36&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <h1>Rome</h1>
+
   <rome ng-model="vm.myDate" input-format="D/MM/YYYY" time="false"></rome>
+  <rome ng-model="vm.date3" initial-value="2014-12-08 08:36"></rome>
+  <rome ng-model="vm.date4" week-start="1"></rome>
   {{ vm.myDate | date }}
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>

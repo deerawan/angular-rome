@@ -6706,10 +6706,24 @@ var moment = require('moment');
 
     function link(scope, element, attrs, ngModelCtrl) {
       var romeConfig = {
-        initialValue: attrs.ngModel,
-        time: attrs.time === 'true',
-        inputFormat: attrs.inputFormat
+        initialValue: ngModelCtrl.$modelValue.value
       };
+
+      if (attrs.initialValue) {
+        romeConfig.initialValue = attrs.initialValue;
+      }
+
+      if (attrs.time) {
+        romeConfig.time = attrs.time === 'true';
+      }
+
+      if (attrs.inputFormat) {
+        romeConfig.inputFormat = attrs.inputFormat;
+      }
+
+      if (attrs.weekStart) {
+        romeConfig.weekStart = Number(attrs.weekStart);
+      }
 
       var inputElement = element.find('input')[0];
       var romeElement = rome(inputElement, romeConfig);
@@ -6721,7 +6735,7 @@ var moment = require('moment');
       });
 
       ngModelCtrl.$render = function() {
-        inputElement.value = moment(ngModelCtrl.$viewValue.date).format(attrs.inputFormat);
+        inputElement.value = romeElement.getDateString();
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
