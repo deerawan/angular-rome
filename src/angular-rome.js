@@ -69,6 +69,14 @@ var moment = require('moment');
         romeConfig.max = attrs.max;
       }
 
+      if (attrs.dayFormat) {
+        romeConfig.dayFormat = attrs.dayFormat;
+      }
+
+      if (attrs.weekdayFormat) {
+        romeConfig.weekdayFormat = attrs.weekdayFormat;
+      }
+
       if (attrs.beforeEq) {
         var beforeElement = document.getElementById(attrs.beforeEq);
         romeConfig.dateValidator = rome.val.beforeEq(beforeElement);
@@ -90,7 +98,7 @@ var moment = require('moment');
       }
 
       if (attrs.styles) {
-        romeConfig.styles = attrs.styles;
+        romeConfig.styles = JSON.parse(attrs.styles);
       }
 
       var romeElement = rome(input, romeConfig);

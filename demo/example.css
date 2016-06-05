@@ -87,3 +87,11 @@ pre code {
   right: 0;
   border: 0;
 }
+
+.red-container {
+  background: red !important;
+}
+
+.green-container {
+  background: green !important;
+}

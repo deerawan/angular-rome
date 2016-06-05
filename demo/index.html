@@ -31,11 +31,29 @@
     </div>
 
     <div class='parent'>
-      <label for='sm'>Works with input format: </label>{{ vm.dateInputFormat | date }}
+      <label for='sm'>Works with input format: </label>
       <rome ng-model="vm.dateInputFormat" input-format="D/MM/YYYY"></rome>
+      <p>Model value: {{ vm.dateInputFormat | date }}</p>
       <pre>
         <code>
           &lt;rome ng-model=&quot;vm.dateInputFormat&quot; input-format=&quot;D/MM/YYYY&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
+      <p>
+        <label for='sm'>Using custom styles option 1: </label>
+        <rome ng-model="vm.dateCustomStyle1" styles='{ "container": "rd-container red-container" }'></rome>
+      </p>
+      <p>
+        <label for='sm'>Using custom styles option 2: </label>
+        <rome ng-model="vm.dateCustomStyle2" styles='{{ vm.customStyle }}'></rome>
+      </p>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.dateCustomStyle1&quot; styles=&apos;{ &quot;container&quot;: &quot;rd-container red-container&quot; }&apos;&gt;&lt;/rome&gt;
+          &lt;rome ng-model=&quot;vm.dateCustomStyle2&quot; styles=&apos; vm.customStyle2 &apos;&gt;&lt;/rome&gt;
         </code>
       </pre>
     </div>

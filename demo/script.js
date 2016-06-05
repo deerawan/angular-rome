@@ -9,5 +9,8 @@
     var vm = this;
     vm.myDate = new Date();
     vm.dateInputFormat = new Date();
+    vm.customStyle = {
+      container: 'rd-container green-container'
+    };
   }
 })();
