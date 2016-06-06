@@ -9,7 +9,11 @@
     var vm = this;
     vm.myDate = new Date();
     vm.dateInputFormat = new Date('2015-05-05');
-    vm.dateExistingModel = new Date('2015-01-01');
+
+    // working with model
+    vm.dateExistingModelDate = new Date('2015-01-01');
+    vm.dateExistingModelString = '2015-02-01';
+
     vm.dateNgChanged = new Date('2016-01-01');
     vm.customStyle = {
       container: 'rd-container green-container'

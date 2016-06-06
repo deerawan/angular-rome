@@ -31,14 +31,25 @@
     </div>
 
     <div class='parent'>
-      <label for='dt'>Works just fine with existing model value </label>
-      <rome ng-model="vm.dateExistingModel"></rome>
+      <h2>Working with Model</h2>
+      <p>
+        <label for='dt'>Works just fine with existing model using Date() </label>
+        <rome ng-model="vm.dateExistingModelDate"></rome>
+      </p>
+      <p>
+        <label for='dt'>Works just fine with existing model using String </label>
+        <rome ng-model="vm.dateExistingModelString"></rome>
+      </p>
       <pre>
         <code>
-          vm.dateExistingModel = new Date('2015-01-01');
+          vm.dateExistingModelDate = new Date('2015-01-01');
         </code>
         <code>
-          &lt;rome ng-model=&quot;vm.dateExistingModel&quot;&gt;&lt;/rome&gt;
+          vm.dateExistingModelString = '2015-02-01';
+        </code>
+        <code>
+          &lt;rome ng-model=&quot;vm.dateExistingModelDate&quot;&gt;&lt;/rome&gt;
+          &lt;rome ng-model=&quot;vm.dateExistingModelString&quot;&gt;&lt;/rome&gt;
         </code>
       </pre>
     </div>
