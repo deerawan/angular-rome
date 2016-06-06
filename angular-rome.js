@@ -6692,8 +6692,6 @@ var moment = require('moment');
     // Creates:
     //
     var directive = {
-        bindToController: true,
-        controller: RomeController,
         controllerAs: 'vm',
         require: 'ngModel',
         link: link,
@@ -6710,49 +6708,22 @@ var moment = require('moment');
 
       addNonDirectiveAttributes(attrs, element, inputElement);
 
-      var romeConfig = {
-        initialValue: ngModelCtrl.$modelValue.value
-      };
+      var romeConfig = {};
 
-      if (attrs.initialValue) {
-        romeConfig.initialValue = attrs.initialValue;
-      }
-
-      if (attrs.time) {
-        romeConfig.time = attrs.time === 'true';
-      }
-
-      if (attrs.date) {
-        romeConfig.date = attrs.date === 'true';
-      }
-
-      if (attrs.inputFormat) {
-        romeConfig.inputFormat = attrs.inputFormat;
-      }
-
-      if (attrs.weekStart) {
-        romeConfig.weekStart = Number(attrs.weekStart);
-      }
-
-      if (attrs.monthsInCalendar) {
-        romeConfig.monthsInCalendar = Number(attrs.monthsInCalendar);
-      }
-
-      if (attrs.min) {
-        romeConfig.min = attrs.min;
-      }
-
-      if (attrs.max) {
-        romeConfig.max = attrs.max;
-      }
-
-      if (attrs.dayFormat) {
-        romeConfig.dayFormat = attrs.dayFormat;
-      }
-
-      if (attrs.weekdayFormat) {
-        romeConfig.weekdayFormat = attrs.weekdayFormat;
-      }
+      if (attrs.initialValue) { romeConfig.initialValue = attrs.initialValue; }
+      if (attrs.time) { romeConfig.time = attrs.time === 'true'; }
+      if (attrs.date) { romeConfig.date = attrs.date === 'true'; }
+      if (attrs.inputFormat) { romeConfig.inputFormat = attrs.inputFormat; }
+      if (attrs.weekStart) { romeConfig.weekStart = Number(attrs.weekStart); }
+      if (attrs.monthsInCalendar) { romeConfig.monthsInCalendar = Number(attrs.monthsInCalendar); }
+      if (attrs.min) { romeConfig.min = attrs.min; }
+      if (attrs.max) { romeConfig.max = attrs.max; }
+      if (attrs.dayFormat) { romeConfig.dayFormat = attrs.dayFormat; }
+      if (attrs.weekdayFormat) { romeConfig.weekdayFormat = attrs.weekdayFormat; }
+      if (attrs.styles) { romeConfig.styles = JSON.parse(attrs.styles); }
+      if (attrs.timeInterval) { romeConfig.timeInterval = Number(attrs.timeInterval); }
+      if (attrs.autoHideOnBlur) { romeConfig.autoHideOnBlur = attrs.autoHideOnBlur === 'true'; }
+      if (attrs.autoClose) { romeConfig.autoClose = attrs.autoClose === 'true'; }
 
       if (attrs.beforeEq) {
         var beforeElement = document.getElementById(attrs.beforeEq);
@@ -6774,20 +6745,13 @@ var moment = require('moment');
         romeConfig.dateValidator = rome.val.after(afterElement);
       }
 
-      if (attrs.styles) {
-        romeConfig.styles = JSON.parse(attrs.styles);
-      }
-
-      if (attrs.timeInterval) { romeConfig.timeInterval = Number(attrs.timeInterval); }
-      if (attrs.autoHideOnBlur) { romeConfig.autoHideOnBlur = attrs.autoHideOnBlur === 'true'; }
-      if (attrs.autoHideOnBlur) { romeConfig.autoHideOnBlur = attrs.autoHideOnBlur === 'true'; }
-
       var romeElement = rome(input, romeConfig);
 
       ngModelCtrl.$formatters.push(function(modelValue) {
         if (modelValue) {
           input.value = romeElement.setValue(modelValue);
         }
+        return modelValue;
       });
 
       ngModelCtrl.$render = function() {
@@ -6795,9 +6759,7 @@ var moment = require('moment');
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
-        var test =  romeElement.getDate();
-        console.log(test);
-        return test;
+        return romeElement.getDate().toISOString();
       });
 
       romeElement.on('data', function (value) {
@@ -6820,10 +6782,6 @@ var moment = require('moment');
         });
       }
     }
-  }
-  /* @ngInject */
-  function RomeController () {
-
   }
 })();
 },{"moment":10,"rome":35}]},{},[50]);

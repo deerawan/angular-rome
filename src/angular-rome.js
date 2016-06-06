@@ -74,6 +74,7 @@ var moment = require('moment');
         if (modelValue) {
           input.value = romeElement.setValue(modelValue);
         }
+        return modelValue;
       });
 
       ngModelCtrl.$render = function() {
@@ -81,7 +82,7 @@ var moment = require('moment');
       };
 
       ngModelCtrl.$parsers.push(function(viewValue) {
-        return romeElement.getDate();
+        return romeElement.getDate().toISOString();
       });
 
       romeElement.on('data', function (value) {

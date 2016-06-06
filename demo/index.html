@@ -55,6 +55,18 @@
     </div>
 
     <div class='parent'>
+      <label for='sm'>Works with ng-change: </label>
+      <rome ng-model="vm.dateNgChanged" input-format="{{ vm.inputFormat }}" ng-change="vm.updateDate()"></rome>
+      <p>Model value: {{ vm.dateNgChanged | date }}</p>
+      <p>Updated at: {{ vm.dateTimeNgChanged }}</p>
+      <pre>
+        <code>
+          &lt;rome ng-model=&quot;vm.dateNgChanged&quot; input-format=&quot;D/MM/YYYY&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
       <p>
         <label for='sm'>Using custom styles option 1: </label>
         <rome ng-model="vm.dateCustomStyle1" styles='{ "container": "rd-container red-container" }'></rome>
