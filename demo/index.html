@@ -31,6 +31,19 @@
     </div>
 
     <div class='parent'>
+      <label for='dt'>Works just fine with existing model value </label>
+      <rome ng-model="vm.dateExistingModel"></rome>
+      <pre>
+        <code>
+          vm.dateExistingModel = new Date('2015-01-01');
+        </code>
+        <code>
+          &lt;rome ng-model=&quot;vm.dateExistingModel&quot;&gt;&lt;/rome&gt;
+        </code>
+      </pre>
+    </div>
+
+    <div class='parent'>
       <label for='sm'>Works with input format: </label>
       <rome ng-model="vm.dateInputFormat" input-format="D/MM/YYYY"></rome>
       <p>Model value: {{ vm.dateInputFormat | date }}</p>

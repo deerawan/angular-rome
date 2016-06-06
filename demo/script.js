@@ -9,6 +9,7 @@
     var vm = this;
     vm.myDate = new Date();
     vm.dateInputFormat = new Date();
+    vm.dateExistingModel = new Date('2015-01-01');
     vm.customStyle = {
       container: 'rd-container green-container'
     };

@@ -6778,6 +6778,10 @@ var moment = require('moment');
         romeConfig.styles = JSON.parse(attrs.styles);
       }
 
+      if (attrs.timeInterval) { romeConfig.timeInterval = Number(attrs.timeInterval); }
+      if (attrs.autoHideOnBlur) { romeConfig.autoHideOnBlur = attrs.autoHideOnBlur === 'true'; }
+      if (attrs.autoHideOnBlur) { romeConfig.autoHideOnBlur = attrs.autoHideOnBlur === 'true'; }
+
       var romeElement = rome(input, romeConfig);
 
       ngModelCtrl.$formatters.push(function(modelValue) {
