@@ -7,11 +7,12 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'test/spec/**/*.js'
+      'angular-rome.js',
+      'test/**/*.js'
     ],
     autoWatch: false,
     singleRun: true,
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS2'],
     exclude: []
   });
 };
